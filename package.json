@@ -1,0 +1,25 @@
+{
+	"name": "thesnake",
+	"version": "1.0.0",
+	"description": "Javascript Snake Game",
+	"scripts": {
+		"build": "webpack",
+		"watch": "webpack --w"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/evanzombie/TheSnake.git"
+	},
+	"author": "Wenlong Yu",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/evanzombie/TheSnake/issues"
+	},
+	"homepage": "https://github.com/evanzombie/TheSnake#readme",
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-es2015": "^6.24.1",
+		"webpack": "^3.11.0"
+	}
+}
