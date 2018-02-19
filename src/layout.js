@@ -2,23 +2,24 @@ import Snake from './snake';
 
 const cvs = document.getElementById('canvas');
 const ctx = cvs.getContext('2d');
+const startBtn = document.getElementById('startBtn');
 
 const fruitImg = new Image();
 fruitImg.src = 'img/fruit.png';
 
 // Game Settings
 let settings = {
-    fruitColor: 'red',
-    snakeColor: 'black',
+    fruitColor: '#B67766',
+    snakeColor: '#ffefeb',
     sideSize: 500,
     unitSize: 10,
     snakeLength: 10,
     startX: 10,
     startY: 10,
     score: 0,
-    timeInterval: 100 //ms
+    timeInterval: 80, //ms,
+    direction: ''
 };
-let direction;
 
 //Set Canvas Size
 cvs.width = cvs.height = settings.sideSize;
@@ -30,7 +31,7 @@ scoreID.innerHTML = settings.score;
 //Recet
 let reset = () => {
     ctx.clearRect(0, 0, cvs.width, cvs.height);
-    clearInterval();
+    // clearInterval();
 };
 
 // Create Snake
@@ -41,17 +42,18 @@ snakeArr[0] = {
 };
 
 let snakeSetup = (x, y) => {
-    for (let i = settings.snakeLength * 2; i >= 0; i--) {
-        snakeArr.push({ x: 10, y: i });
+    for (let i = settings.snakeLength * 5; i >= 0; i = i - settings.snakeLength) {
+        snakeArr.push({ x: settings.startX, y: i });
     }
+    console.log(snakeArr.length);
 };
 
 let createSnake = () => {
-    // snakeSetup();
-
     for (let i = 0; i < snakeArr.length; i++) {
         ctx.fillStyle = settings.snakeColor;
         ctx.fillRect(snakeArr[i].x, snakeArr[i].y, settings.snakeLength, settings.snakeLength);
+        ctx.strokeStyle = 'white';
+        ctx.strokeRect(snakeArr[i].x, snakeArr[i].y, settings.snakeLength, settings.snakeLength);
     }
 };
 
@@ -92,6 +94,7 @@ let createFruit = () => {
 };
 
 //Snake Key Control
+let d = settings.direction;
 let paint = () => {
     ctx.fillStyle = '#fcd9d1';
     ctx.fillRect(0, 0, settings.sideSize, settings.sideSize);
@@ -103,26 +106,21 @@ let paint = () => {
     let headY = snakeArr[0].y;
 
     //Direction
-    switch (direction) {
+    switch (d) {
         case 'left':
             headX -= settings.unitSize;
-            console.log(headX);
-
             break;
 
         case 'up':
             headY -= settings.unitSize;
-            console.log(headY);
             break;
 
         case 'right':
             headX += settings.unitSize;
-            console.log(headX);
             break;
 
         case 'down':
             headY += settings.unitSize;
-            console.log(headY);
             break;
     }
 
@@ -136,7 +134,6 @@ let paint = () => {
     ) {
         reset();
         gameStop();
-
         alert('Game over... Your score is ' + settings.score);
         return;
     }
@@ -144,7 +141,7 @@ let paint = () => {
     // Eat Fruit
     if (headX == fruit.x && headY == fruit.y) {
         let tail = { x: headX, y: headY };
-        // score + 1
+        //Score + 1
         scoreID.innerHTML = ++settings.score;
         //Create New Fruit
         fruit.x = Math.floor(Math.random() * (settings.sideSize / settings.unitSize)) * settings.unitSize;
@@ -166,43 +163,63 @@ let gameStop = () => {
     clearInterval(gameStart);
 };
 
-let move = () => {
-    document.addEventListener('keydown', turn);
-};
-
 let turn = e => {
     let key = e.keyCode;
 
     switch (key) {
         case 37:
-            if (direction != 'right') {
-                direction = 'left';
-                console.log(direction);
-                return direction;
+            if (d != 'right') {
+                d = 'left';
+                return d;
             }
             break;
         case 38:
-            if (direction != 'down') {
-                direction = 'up';
-                console.log(direction);
-                return direction;
+            if (d != 'down') {
+                d = 'up';
+                return d;
             }
             break;
         case 39:
-            if (direction != 'left') {
-                direction = 'right';
-                console.log(direction);
-                return direction;
+            if (d != 'left') {
+                d = 'right';
+                return d;
             }
             break;
         case 40:
-            if (direction != 'up') {
-                direction = 'down';
-                console.log(direction);
-                return direction;
+            if (d != 'up') {
+                d = 'down';
+                return d;
             }
             break;
     }
 };
-move();
-export default { snakeArr, createSnake, createFruit, scoreID, paint, settings, gameStart };
+
+let startGame = () => {
+    startBtn.addEventListener('click', reStart);
+    document.addEventListener('keydown', turn);
+};
+
+// let startGame = () => {
+//     setupControl();
+// };
+
+let reStart = () => {
+    // alert('??');
+    // reset();
+
+    // d = 'down';
+    paint();
+};
+
+export default {
+    snakeArr,
+    createSnake,
+    createFruit,
+    scoreID,
+    paint,
+    settings,
+    gameStart,
+    snakeSetup,
+    turn,
+    startGame
+};

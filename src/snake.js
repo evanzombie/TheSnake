@@ -2,9 +2,9 @@ import Layout from './layout';
 
 let direction;
 
-let move = () => {
-	document.addEventListener('keydown', turn);
-};
+// let move = () => {
+// 	document.addEventListener('keydown', turn);
+// };
 
 let turn = e => {
 	let key = e.keyCode;
@@ -51,4 +51,4 @@ let bitten = (x, y, arr) => {
 	}
 };
 
-export default { move, direction, bitten };
+export default { turn, direction, bitten };
