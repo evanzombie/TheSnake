@@ -3,6 +3,25 @@ body {
 	padding: 1em;
 }
 
+.container {
+	width: 500px;
+	overflow: auto;
+	position: relative;
+}
+
+.cover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	position: absolute;
+	color: white;
+	background-color: #fcd9d1;
+	text-align: center;
+	width: 500px;
+	height: 500px;
+}
+
 canvas {
 	background-color: #fcd9d1;
 	display: block;
@@ -30,23 +49,6 @@ canvas {
 	background-color: #fcd9d1;
 }
 
-.cover {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 30px;
-	position: absolute;
-	color: white;
-	background-color: #fcd9d1;
-	text-align: center;
-	width: 500px;
-	height: 500px;
-}
-.container {
-	width: 500px;
-	overflow: auto;
-	position: relative;
-}
 .hide {
 	display: none !important;
 }

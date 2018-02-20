@@ -5,17 +5,16 @@ import Settings from './settings';
 const show = document.getElementById('startBtn');
 const cover = document.getElementById('coverID');
 
+let gameSpeed = Settings.timeInterval;
+
 let showResult = () => {
     if (cover.classList.contains('hide')) {
-        console.log('yes');
         cover.classList.remove('hide');
     } else {
-        console.log('no');
         cover.classList.add('hide');
     }
 };
 
-let gameSpeed = Settings.timeInterval;
 //Turn the snake
 let turn = e => {
     let key = e.keyCode;

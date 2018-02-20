@@ -275,17 +275,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var show = document.getElementById('startBtn');
 var cover = document.getElementById('coverID');
 
+var gameSpeed = _settings2.default.timeInterval;
+
 var showResult = function showResult() {
     if (cover.classList.contains('hide')) {
-        console.log('yes');
         cover.classList.remove('hide');
     } else {
-        console.log('no');
         cover.classList.add('hide');
     }
 };
 
-var gameSpeed = _settings2.default.timeInterval;
 //Turn the snake
 var turn = function turn(e) {
     var key = e.keyCode;
