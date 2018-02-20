@@ -1,0 +1,52 @@
+body {
+	font-family: Gillsans, Arial;
+	padding: 1em;
+}
+
+canvas {
+	background-color: #fcd9d1;
+	display: block;
+}
+
+.btnRow button {
+	color: black;
+	background-color: transparent;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition-duration: 0.5s;
+	border-color: black;
+}
+
+.btnRow button:hover {
+	color: white;
+	border-color: #fcd9d1;
+	background-color: #fcd9d1;
+}
+
+.pressedBtn {
+	color: white;
+	border-color: #fcd9d1;
+	background-color: #fcd9d1;
+}
+
+.cover {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	position: absolute;
+	color: white;
+	background-color: #fcd9d1;
+	text-align: center;
+	width: 500px;
+	height: 500px;
+}
+.container {
+	width: 500px;
+	overflow: auto;
+	position: relative;
+}
+.hide {
+	display: none !important;
+}
