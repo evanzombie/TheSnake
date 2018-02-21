@@ -1,0 +1,25 @@
+body {
+	font-family: gillsans;
+	padding: 1em;
+}
+
+canvas {
+	background-color: #fcd9d1;
+	display: block;
+	margin: 10px;
+}
+.mybtn {
+	color: black;
+	background-color: transparent;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition-duration: 0.5s;
+}
+
+.mybtn:hover {
+	color: white;
+	border-color: #fcd9d1;
+	background-color: #fcd9d1;
+}
+
